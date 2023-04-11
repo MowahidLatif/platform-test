@@ -1,9 +1,10 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+
 datasource db {
   provider     = "mysql"
-  url          = env("DATABASE_URL")
+  url          = env("mysql://wnebhstg15u15m07lesh:pscale_pw_YyfTxEXUHk0g5HDDq32nvUoFGhq3g64U2xg1Bfy4bJs@aws.connect.psdb.cloud/platforms?sslaccept=strict")
   relationMode = "prisma"
 }
 
