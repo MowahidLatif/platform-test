@@ -90,7 +90,7 @@ export default function Layout({ siteId, children }: LayoutProps) {
               rel="noreferrer"
               target="_blank"
             >
-              <p className="hidden sm:block">Build my own</p>
+              <p className="hidden sm:block">THIS IS A LINK TO SOME REPO</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"

@@ -64,3 +64,4 @@ export default async function middleware(req: NextRequest) {
     new URL(`/_sites/${currentHost}${path}`, req.url)
   );
 }
+     

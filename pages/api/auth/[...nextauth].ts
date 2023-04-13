@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
+const useSecureCookies = !!process.env.VERCEL_URL
 
 if (!process.env.GITHUB_ID || !process.env.GITHUB_SECRET)
   throw new Error("Failed to initialize Github authentication");
@@ -32,14 +33,14 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   cookies: {
     sessionToken: {
-      name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.session-token`,
+      name: `${useSecureCookies ? "__Secure-" : ""}next-auth.session-token`,
       options: {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
         // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
-        domain: VERCEL_DEPLOYMENT ? ".vercel.pub" : undefined,
-        secure: VERCEL_DEPLOYMENT,
+        domain: useSecureCookies ? ".vercel.pub" : undefined,
+        secure: useSecureCookies,
       },
     },
   },
